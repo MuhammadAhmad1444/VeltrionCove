@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { @apply bg-white text-ink font-sans antialiased; font-size: 16px; line-height: 1.6; }
+  h1, h2, h3, h4 { @apply font-display text-ink; letter-spacing: -0.02em; line-height: 1.12; }
+  ::selection { background: #F2C98A; color: #0C2B33; }
+  :focus-visible { outline: 3px solid #2BB3BD; outline-offset: 2px; border-radius: 6px; }
+  img { max-width: 100%; }
+}
+
+@layer components {
+  .wrap { @apply max-w-site mx-auto px-4 sm:px-6 lg:px-10; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-semibold transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-cove text-white hover:bg-cove-deep; }
+  .btn-dark { @apply btn bg-ink text-white hover:bg-cove-deep; }
+  .btn-light { @apply btn bg-white text-ink hover:bg-sand-soft; }
+  .btn-outline { @apply btn border border-line text-ink hover:border-cove hover:text-cove; }
+  .btn-outline-light { @apply btn border border-white/30 text-white hover:bg-white/10; }
+  .chip { @apply inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors; }
+  .field { @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-faint focus:border-cove focus:outline-none focus:ring-2 focus:ring-cove/20; }
+  .field-label { @apply block text-sm font-medium text-ink mb-1.5; }
+  .card { @apply rounded-card border border-line bg-white; }
+  .section { @apply py-16 lg:py-24; }
+  .h-section { @apply text-3xl sm:text-4xl font-semibold; }
+  .lede { @apply text-lg text-ink-soft max-w-2xl; }
+
+  .legal h2 { @apply font-display text-xl font-semibold text-ink mt-10 mb-3; }
+  .legal h3 { @apply font-display text-base font-semibold text-ink mt-6 mb-2; }
+  .legal p { @apply text-ink-soft text-[15px] leading-7 mb-4; }
+  .legal ul { @apply list-disc pl-5 space-y-1.5 text-ink-soft text-[15px] leading-7 mb-4; }
+  .legal a { @apply text-cove underline underline-offset-2; }
+  .legal strong { @apply text-ink font-semibold; }
+  .legal table { @apply w-full text-sm mb-6 border-collapse; }
+  .legal th { @apply text-left font-semibold text-ink border-b border-line py-2 pr-4; }
+  .legal td { @apply text-ink-soft border-b border-line py-2 pr-4 align-top; }
+}
+
+.hero-rise { animation: rise .8s cubic-bezier(.16,1,.3,1) both; }
+.hero-rise-2 { animation: rise .8s .12s cubic-bezier(.16,1,.3,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
