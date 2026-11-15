@@ -28,7 +28,9 @@ const services = [
 
 export default function Home() {
   useTitle()
-  const featured = PRODUCTS.filter((p) => p.featured)
+  // Six products for a clean 3 x 2 grid; the hero already features the Current Pro earbuds.
+  const others = PRODUCTS.filter((p) => p.slug !== 'current-pro-earbuds')
+  const featured = [...others.filter((p) => p.featured), ...others.filter((p) => !p.featured)].slice(0, 6)
 
   return (
     <>
@@ -99,11 +101,8 @@ export default function Home() {
             </div>
             <Link to="/shop" className="btn-outline">See all {PRODUCTS.length} products</Link>
           </div>
-          <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.slice(0, 3).map((p) => <ProductCard key={p.slug} product={p} />)}
-          </div>
-          <div className="mt-10 grid gap-x-6 gap-y-10 sm:grid-cols-2">
-            {featured.slice(3, 5).map((p) => <ProductCard key={p.slug} product={p} />)}
+          <div className="grid gap-x-6 gap-y-10 grid-cols-2 lg:grid-cols-3">
+            {featured.map((p) => <ProductCard key={p.slug} product={p} />)}
           </div>
         </div>
       </section>
